@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Message</title>
+    <style>
+        /* Centering the text */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        /* Styling for the red color */
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <a href="#" id="privateMessageLink" class="red">ΓΕΙΑ ΣΟΥ ΜΑΜΑ .ΚΑΝΕ ΚΛΙΚ ΕΔΩ ΚΑΙ ΜΕΤΑ ΠΕΡΙΜΕΝΕ.</a>
+    
+    <script>
+        document.getElementById("privateMessageLink").addEventListener("click", function(event){
+            event.preventDefault(); // Prevent the default action of the link
+            
+            // Display first message after clicking
+            var firstMessage = document.getElementById("privateMessageLink");
+            firstMessage.textContent = "Η ΜΑΡΙΑΛΕΝΑ ΛΕΕΙ ΠΕΡΙΜΕΝΕ";
+            
+            // Delay the appearance of the second message
+            setTimeout(function() {
+                var secondMessage = document.createElement("p");
+                var messageText = "ΑΥΤΟ ΕΙΝΑΙ ΕΝΑ ΜΗΝΥΜΑ. ΟΤΙ ΣΕ ΑΓΑΠΑΕΙ ΠΟΛΥ. ΚΑΛΗΝΥΧΤΑ. Α ΜΗΝ ΤΡΟΜΑΞΕΙΣ. ΔΕΝ ΕΙΝΑΙ ΜΗΝΥΜΑ ΑΥΤΟΚΤΟΝΙΑΣ. ΑΠΛΑ ΜΑΘΑΙΝΩ ΝΑ ΚΑΝΩ ΠΡΑΓΜΑΤΑ ΣΤΟΝ ΥΠΟΛΟΓΙΣΤΗ";
+                var index = 0;
+
+                // Function to display message letter by letter
+                function displayNextLetter() {
+                    if (index < messageText.length) {
+                        secondMessage.textContent += messageText[index];
+                        index++;
+                        setTimeout(displayNextLetter, 100); // Adjust the delay between letters here (100ms in this case)
+                    }
+                }
+
+                displayNextLetter(); // Start displaying the message letter by letter
+                document.body.appendChild(secondMessage);
+                
+                // Remove the first message element
+                firstMessage.remove();
+            }, 8000); // 8000 milliseconds = 8 seconds
+        });
+    </script>
+</body>
+</html>
